@@ -6,7 +6,7 @@
 
 Полнофункциональный блог на Django с аутентификацией, CRUD операциями, поиском и темами оформления.
 
-![Скриншот блога](screenshot.png)
+![Скриншот блога](https://github.com/bsekinaev/Myblog/blob/main/screeenshot.png)
 
 ## Особенности
 
