@@ -1,7 +1,4 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout, authenticate
-from django.contrib import messages
-from .forms import RegisterForm, LoginForm
+from django.shortcuts import render
 
 def register_view(request):
     if request.method == 'POST':
@@ -34,3 +31,10 @@ def logout_view(request):
     logout(request)
     messages.info(request, 'Вы вышли из системы.')
     return redirect('blog-home')
+
+
+def profile_view():
+    if request.user.is_authenticated:
+        return render(request, 'users/profile.html')
+    else:
+        return redirect('blog-home')

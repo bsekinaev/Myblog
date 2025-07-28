@@ -234,3 +234,34 @@ form button:hover {
     color: var(--text-color);
     font-weight: 500;
 }
+
+/* Стили для формы комментариев */
+.comment-form {
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 5px;
+}
+
+.comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    resize: vertical;
+    min-height: 80px;
+}
+
+.comment-form button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.comment-form button:hover {
+    background: #0069d9;
+}
