@@ -1,0 +1,30 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="form-container">
+    <h2>
+        {% if editing %}
+        Редактировать пост
+        {% else %}
+        Новый пост
+        {% endif %}
+    </h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="id_title">Заголовок:</label>
+            {{ form.title }}
+        </div>
+        <div>
+            <label for="id_content">Содержание:</label>
+            {{ form.content }}
+        </div>
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <a href="{% if editing %}{% url 'post-detail' pk=post.pk %}{% else %}{% url 'blog-home' %}{% endif %}" class="btn">
+        Отмена
+    </a>
+</div>
+{% endblock %}

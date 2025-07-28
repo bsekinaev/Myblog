@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+{% for post in posts %}
+<article>
+    <h2><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+    <p class="meta">
+        <span>Автор: {{ post.author.username }}</span> |
+        <span>Дата: {{ post.date_posted|date:"d M Y" }}</span>
+    </p>
+    <p>{{ post.content|truncatechars:200 }}</p>
+    <a href="{% url 'post-detail' post.id %}" class="btn">Читать далее</a>
+</article>
+{% empty %}
+<p>Пока нет постов. Будьте первым, кто добавит пост!</p>
+{% endfor %}
+{% endblock %}
+
+{% if posts.has_other_pages %}
+<div class="pagination">
+    {% if posts.has_previous %}
+    <a href="?page=1" class="btn">Первая</a>
+    <a href="?page={{ posts.previous_page_number }}" class="btn">Назад</a>
+    {% endif %}
+
+    <span>Страница {{ posts.number }} из {{ posts.paginator.num_pages }}</span>
+
+    {% if posts.has_next %}
+    <a href="?page={{ posts.next_page_number }}" class="btn">Вперед</a>
+    <a href="?page={{ posts.paginator.num_pages }}" class="btn">Последняя</a>
+    {% endif %}
+</div>
+{% endif %}

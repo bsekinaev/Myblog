@@ -1,0 +1,16 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<h2>Результаты поиска для "{{ query }}"</h2>
+
+{% if results %}
+{% for post in results %}
+<article>
+    <h3><a href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h3>
+    <p>{{ post.content|truncatechars:200 }}</p>
+</article>
+{% endfor %}
+{% else %}
+<p>Ничего не найдено по запросу "{{ query }}"</p>
+{% endif %}
+{% endblock %}
